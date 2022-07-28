@@ -1,13 +1,11 @@
-const { FluencePeer, KeyPair, setLogLevel } = require("@fluencelabs/fluence");
-const { testNet } = require('@fluencelabs/fluence-network-environment');
-const PeerId = require('peer-id');
-const { createResource } = require("./test.js");
+import { FluencePeer, KeyPair, setLogLevel } from "@fluencelabs/fluence";
+import { testNet } from '@fluencelabs/fluence-network-environment';
+import PeerId from 'peer-id';
+import { createResource } from "./test.js";
 
 const connectTo = testNet[1];
 
 (async () => {
-    setLogLevel("TRACE");
-
     // const nodeKeypair = await KeyPair.randomEd25519();
     // const nodePeer = await initPeer(nodeKeypair)
     // const channelAdminKeypair = await KeyPair.randomEd25519();
