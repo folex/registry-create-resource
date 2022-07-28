@@ -1,0 +1,10 @@
+module Test
+
+import "@fluencelabs/aqua-lib/builtin.aqua"
+import createResource from "@fluencelabs/registry/resources-api.aqua"
+export createResource
+
+func getInfo(peer: PeerId) -> Info:
+    on peer:
+        info <- Peer.identify()
+    <- info
