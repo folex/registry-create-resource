@@ -6,8 +6,6 @@ const { createResource } = require("./test.js");
 const connectTo = testNet[1];
 
 (async () => {
-    setLogLevel("TRACE");
-
     // const nodeKeypair = await KeyPair.randomEd25519();
     // const nodePeer = await initPeer(nodeKeypair)
     // const channelAdminKeypair = await KeyPair.randomEd25519();

@@ -6,19 +6,19 @@
  * Aqua version: 0.7.4-334
  *
  */
-const { Fluence, FluencePeer } = require('@fluencelabs/fluence');
-const {
+import { Fluence, FluencePeer } from '@fluencelabs/fluence';
+import {
     CallParams,
     callFunction,
     registerService,
-} = require('@fluencelabs/fluence/dist/internal/compilerSupport/v3');
+} from '@fluencelabs/fluence/dist/internal/compilerSupport/v3';
 
 
 // Services
 
 // Functions
 
-function createResource(...args) {
+export function createResource(...args) {
 
     let script = `
                     (xor
@@ -149,50 +149,48 @@ function createResource(...args) {
     return callFunction(
         args,
         {
-            "functionName": "createResource",
-            "arrow": {
-                "tag": "arrow",
-                "domain": {
-                    "tag": "labeledProduct",
-                    "fields": {
-                        "label": {
-                            "tag": "scalar",
-                            "name": "string"
-                        }
-                    }
-                },
-                "codomain": {
-                    "tag": "unlabeledProduct",
-                    "items": [
-                        {
-                            "tag": "option",
-                            "type": {
-                                "tag": "scalar",
-                                "name": "string"
-                            }
-                        },
-                        {
-                            "tag": "array",
-                            "type": {
-                                "tag": "scalar",
-                                "name": "string"
-                            }
-                        }
-                    ]
+    "functionName" : "createResource",
+    "arrow" : {
+        "tag" : "arrow",
+        "domain" : {
+            "tag" : "labeledProduct",
+            "fields" : {
+                "label" : {
+                    "tag" : "scalar",
+                    "name" : "string"
                 }
-            },
-            "names": {
-                "relay": "-relay-",
-                "getDataSrv": "getDataSrv",
-                "callbackSrv": "callbackSrv",
-                "responseSrv": "callbackSrv",
-                "responseFnName": "response",
-                "errorHandlingSrv": "errorHandlingSrv",
-                "errorFnName": "error"
             }
         },
+        "codomain" : {
+            "tag" : "unlabeledProduct",
+            "items" : [
+                {
+                    "tag" : "option",
+                    "type" : {
+                        "tag" : "scalar",
+                        "name" : "string"
+                    }
+                },
+                {
+                    "tag" : "array",
+                    "type" : {
+                        "tag" : "scalar",
+                        "name" : "string"
+                    }
+                }
+            ]
+        }
+    },
+    "names" : {
+        "relay" : "-relay-",
+        "getDataSrv" : "getDataSrv",
+        "callbackSrv" : "callbackSrv",
+        "responseSrv" : "callbackSrv",
+        "responseFnName" : "response",
+        "errorHandlingSrv" : "errorHandlingSrv",
+        "errorFnName" : "error"
+    }
+},
         script
     )
 }
-
-module.exports = { createResource };
